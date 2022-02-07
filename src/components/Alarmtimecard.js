@@ -16,7 +16,7 @@ const MySwitch = ({size,id,hour,minute,timezone,status}) => {
   const onToggleSwitch = () => {setIsSwitchOn(!isSwitchOn)
     Asyncstorage.getItem('alarms',async(err,result)=>
     {
-      
+      console.log("switch",isSwitchOn)
       if(result)
       {
        result=JSON.parse(result)
@@ -32,6 +32,7 @@ const MySwitch = ({size,id,hour,minute,timezone,status}) => {
                //   title: "sammple title",
                //   message: "message is the notification man "
                // })
+               
               
                if(timezone=='PM')
                {
@@ -47,22 +48,29 @@ const MySwitch = ({size,id,hour,minute,timezone,status}) => {
           //    console.log(scheduledate.getTime(),date.getTime())
                if(scheduledate.getTime()<=date.getTime())
                {
-                 console.log("lesser man ")
+               //  console.log("lesser man ")
                  scheduledate=new Date(date.getFullYear(),date.getMonth(),date.getDate()+1,parseInt(hour),parseInt(minute))
                }
                notification.localNotification({
                  channelId:"channel-id",
                  title:"Alarm added",
                  message: "Alarm is set for "+hour+":"+minute+" "+timezone
+                
+                 
+                
                })
                notification.localNotificationSchedule({
                  channelId:"channel-id",
                  message:"alarm is set ",
                  date: scheduledate,
                  id:id,
-                 actions:["dismiss","snooze"],
-                 soundName:'default',
-                 autoCancel:false
+                 actions:["dismiss","snooze"],//playSound:true,
+          //       soundName:'alarmsound',
+                //  autoCancel:false,
+                 ongoing: true,
+                //  vibrate: true,
+                //  vibration: 30000
+                 
                })
                
               

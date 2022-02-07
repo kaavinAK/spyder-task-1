@@ -17,7 +17,15 @@
         <!-- Change the resource name to your App's accent color - or any other color you want -->
         <meta-data  android:name="com.dieam.reactnativepushnotification.notification_color"
                     android:resource="@color/white"/> <!-- or @android:color/{name} to use a standard color -->
+  <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_name"
+                android:value="DEFAULT NOTIFICATION CHANNEL NAME"/>
+        <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_description"
+                    android:value="DEFAULT NOTIFICATION CHANNEL DESCRIPTION"/>
 
+        <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_name.CHANNEL_ID"
+                android:value="YOUR CHANNEL_ID NOTIFICATION CHANNEL NAME"/>
+        <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_description.CHANNEL_ID"
+                    android:value="YOUR CHANNEL_ID NOTIFICATION CHANNEL DESCRIPTION"/>
         <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationActions" />
         <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher" />
         <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationActions" />

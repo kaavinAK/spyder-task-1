@@ -38,8 +38,10 @@ PushNotification.channelExists('channel-id',(result)=>
        channelId: "channel-id", // (required)
        channelName: "My channel", // (required)
        channelDescription: "A channel to categorise your notifications", // (optional) default: undefined.
-       playSound: false, // (optional) default: true
-       soundName: "default", // (optional) See `soundName` parameter of `localNotification` function
+       playSound: true, // (optional) default: true
+      
+      soundName:'alarmsound',
+       // (optional) See `soundName` parameter of `localNotification` function
        importance: 4, // (optional) default: 4. Int value of the Android notification importance
        vibrate: true, // (optional) default: true. Creates the default vibration patten if true.
      },
@@ -71,7 +73,17 @@ PushNotification.configure({
       message:"alarm is set ",
       date: new Date(notification.fireDate+5*1000*60),
       id:notification.id,
-      actions:["dismiss","snooze"]
+      actions:["dismiss","snooze"],
+    
+     
+      // autoCancel:false,
+       ongoing: true,
+     //  vibrate: true,
+     //  vibration: 30000
+   //  repeatType: 'day',
+     // repeatTime: 
+    //  allowWhileIdle: false,
+    //  exact: true,
     })
 
    }

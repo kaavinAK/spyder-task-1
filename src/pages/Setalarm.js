@@ -119,8 +119,10 @@ export default function Setalarm({navigation,route}) {
         data=JSON.stringify(data)
         try{
             await  Asyncstorage.setItem('alarms',data)
+
             
-           //  Alert.alert("alarm is created using function ... ")
+            
+           
            if(timezone=='PM')
            {
              hour=(parseInt(hour)+12).toString()
@@ -141,16 +143,26 @@ export default function Setalarm({navigation,route}) {
            notification.localNotification({
              channelId:"channel-id",
              title:"Alarm added",
-             message: "Alarm is set for "+hour+":"+minute+" "+timezone
+             message: "Alarm is set for "+hour+":"+minute+" "+timezone,
+            
            })
            notification.localNotificationSchedule({
-             channelId:"channel-id",
-             message:"alarm is set ",
+             channelId:"rn-push-notification-channel-id-default-4-300",
+             message:"alarm is set using set alarm ",
              date: scheduledate,
-             id:id,
+             id:alarmarray.length,
              actions:["dismiss","snooze"],
+             playSound:true,
              soundName:'default',
-             autoCancel:false
+            
+            //   autoCancel:false,
+              ongoing: true,
+            //  vibrate: true,
+            //  vibration: 30000
+          //  repeatType: 'day',
+            // repeatTime: 
+            // allowWhileIdle: false,
+            // exact: true,
            })
            
      
